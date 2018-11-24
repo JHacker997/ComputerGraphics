@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 0</title>
+		<script  src="https://threejs.org/build/three.js"></script>
+		<script  src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+		<script type="text/javascript">
+			function mainFunction()
+			{
+				let renderer = new THREE.WebGLRenderer();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+				document.body.appendChild(renderer.domElement);
+
+				let scene = new THREE.Scene();
+
+				let aspect = window.innerWidth / window.innerHeight;
+				let camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 100);
+				camera.position.z = 5;
+				scene.add(camera);
+
+				let geometry = new THREE.BoxGeometry(1, 1, 1);
+				let material = new THREE.MeshNormalMaterial;
+				let cube = new THREE.Mesh(geometry, material);
+				scene.add(cube);
+				
+				renderer.render(scene, camera);
+
+				let render = function () {
+					renderer.render(scene, camera);
+				};
+				
+				let cameraControl = new THREE.OrbitControls(camera);
+				cameraControl.addEventListener('change', render);
+			
+				render();
+			}
+		</script>
+	</head>
+	<body onload="mainFunction();">
+		<h1>John Hacker ID=jo486831</h1>
+	</body>
+</html>
